@@ -19,7 +19,7 @@ import eventBus from './eventBus.js';
 
 export default {
     name: 'app',
-    components : { ContactList, AddContact, UpdateContact, UpdatePhoto}
+    components : { ContactList, AddContact, UpdateContact, UpdatePhoto},
 }
 </script>
 
