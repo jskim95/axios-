@@ -55,6 +55,7 @@ export default {
             this.deleteContact(no);
         });
         eventBus.$on("editPhoto", (no) => {
+            console.log("사진 변경 on")
             this.fetchContactOne(no)
             this.currentView = 'updatePhoto';
         });
@@ -117,6 +118,7 @@ export default {
             })
         },
         fetchContactOne : function(no) {
+            console.log(no)
             this.$axios.get(CONF.FETCH_ONE.replace("${no}", no))
             .then((response) => {
                 this.contact = response.data;

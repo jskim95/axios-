@@ -78,6 +78,7 @@ export default {
       }
     },
     editPhoto : function(no) {
+      console.log("사진 클릭 emit")
       eventBus.$emit("editPhoto", no);
     }
   }
