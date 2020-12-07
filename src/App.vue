@@ -43,7 +43,9 @@ export default {
             this.updateContact(contact);
         });
         eventBus.$on("addContactForm", () => {
+            console.log("새로운 연락처 추가 on")
             this.currentView = 'addContact';
+            console.log(this.currentView)
         });
         eventBus.$on("editContactForm", (no) => {
             this.fetchContactOne(no)
@@ -67,7 +69,7 @@ export default {
         })
     },
     methods : {
-        pageChange : function(page) {
+        pageChanged : function(page) {
             this.contactlist.pageno = page;
             this.fetchContacts();
         },
@@ -86,7 +88,8 @@ export default {
                 this.contactlist.contacts = [];
             })
         },
-        AddContact : function(contact) {
+        addContact : function(contact) {
+            console.log("새로운 연락처 추가 메서드 실행")
             this.$axios.post(CONF.ADD, contact)
             .then((response) => {
                 if(response.data.status === "success") {
@@ -154,7 +157,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 #container {
     font-family: 'Avenir', Arial, Helvetica, sans-serif;
     -webkit-font-smoothing: antialiased;

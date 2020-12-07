@@ -21,7 +21,7 @@
             <td>{{contact.name}}</td>
             <td>{{contact.tel}}</td>
             <td>{{contact.address}}</td>
-            <td><img class="thumbnail" src="contact.photo" @click="editPhoto(contact.no)"></td>
+            <td><img class="thumbnail" :src="contact.photo" @click="editPhoto(contact.no)"></td>
             <td>
               <button class="btn btn-primary" @click="editContact(contact.no)">편집</button>
               <button class="btn btn-primary" @click="deleteContact(contact.no)">삭제</button>
@@ -62,9 +62,11 @@ export default {
   },
   methods: {
     pageChanged : function(page) {
+      console.log("sdf", page)
       eventBus.$emit("pageChanged", page);
     },
     addContact : function() {
+      console.log("새로운 연락처 추가 emit")
       eventBus.$emit("addContactForm");
     },
     editContact : function(no) {
@@ -82,7 +84,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 .addnew {
   margin: 10px auto;
   max-width: 820px;
