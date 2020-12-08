@@ -82,6 +82,7 @@ export default {
                 }
             })
             .then((response) => {
+                console.log(response)
                 this.contactlist = response.data;
             })
             .catch((ex) =>{
@@ -90,7 +91,6 @@ export default {
             })
         },
         addContact : function(contact) {
-            console.log("새로운 연락처 추가 메서드 실행")
             this.$axios.post(CONF.ADD, contact)
             .then((response) => {
                 if(response.data.status === "success") {
@@ -130,7 +130,7 @@ export default {
         deleteContact : function(no) {
             this.$axios.delete(CONF.DELETE.replace("${no}", no))
             .then((response) => {
-                if(response.date.status === "success") {
+                if(response.data.status === "success") {
                     this.fetchContacts();
                 } else {
                     console.log("연락처 삭제 실패 : " + response.data.message);
